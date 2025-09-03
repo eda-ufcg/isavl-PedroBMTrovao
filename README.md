@@ -1,8 +1,8 @@
 # Identificação
 
-* Nome: 
-* Email (@ccc): 
-* Matrícula: 
+* Nome: Pedro Brito de Melo Trovão
+* Email (@ccc): pedro.brito.de.melo.trovao@ccc.ufcg.edu.br
+* Matrícula: 124110728
 
 # Roteiro: isAVL
 
