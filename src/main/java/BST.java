@@ -5,8 +5,15 @@ public class BST {
     private Node root;
     private int size;
     public boolean isAVL() {
-        //TODO: implementar
-        return false;
+        return isAVL(this.root);
+    }
+    private boolean isAVL(Node node) {
+        if (node == null) {
+            return true;
+        } else if (balance(node) > 1) {
+            return false;
+        }
+        return isAVL(node.left) && isAVL(node.right);
     }
     /**
      * Retorna a altura da árvore.
@@ -15,11 +22,11 @@ public class BST {
         if (this.root.left == null && this.root.right == null) {
             return 0;
         } else if (this.root.left == null) {
-            return 1 + this.root.right.height();
+            return 1 + height(this.root.right);
         } else if (this.root.right == null) {
-            return 1 + this.root.left.height();
+            return 1 + height(this.root.left);
         } else {
-            return 1 + max(this.root.left.height(), this.root.right.height());
+            return 1 + Math.max(height(this.root.left), height(this.root.right));
         }
     }
     /**
@@ -30,7 +37,7 @@ public class BST {
         if (node == null) {
             return -1;
         } else {
-            return 1 + max(height(node.left), height(node.right));
+            return 1 + Math.max(height(node.left), height(node.right));
         }
     }
     private int balance(Node node) {
@@ -158,8 +165,6 @@ public class BST {
             return aux;
         }
     }
-    
-    
     /**
      * Implementação recursiva do método de adição.
      * @param element elemento a ser adicionado.
@@ -206,8 +211,7 @@ public class BST {
         if (toRemove != null) {
             remove(toRemove);
             this.size -= 1;
-        }
-        
+        }   
     }
     /**
      * Remove node. Private method to control recursion.
