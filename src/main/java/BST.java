@@ -12,18 +12,30 @@ public class BST {
      * Retorna a altura da árvore.
      */
     public int height() {
-        //TODO implementar
-        return -1;
+        if (this.root.left == null && this.root.right == null) {
+            return 0;
+        } else if (this.root.left == null) {
+            return 1 + this.root.right.height();
+        } else if (this.root.right == null) {
+            return 1 + this.root.left.height();
+        } else {
+            return 1 + max(this.root.left.height(), this.root.right.height());
+        }
     }
     /**
      * Retorna a altura de um determinado nó. Auxiliar
      * para recursão e para o balance.
      */
     private int height(Node node) {
-        return -1;
+        if (node == null) {
+            return -1;
+        } else {
+            return 1 + max(height(node.left), height(node.right));
+        }
     }
     private int balance(Node node) {
-        return -1;
+        if (node != null) return height(node.left) - height(node.right);
+        return 0;
     }
     /**
      * Busca o nó cujo valor é igual ao passado como parâmetro. Essa é a implementação 
