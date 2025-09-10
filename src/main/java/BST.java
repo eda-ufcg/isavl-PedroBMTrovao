@@ -5,15 +5,7 @@ public class BST {
     private Node root;
     private int size;
     public boolean isAVL() {
-        return isAVL(this.root);
-    }
-    private boolean isAVL(Node node) {
-        if (node == null) {
-            return true;
-        } else if (balance(node) > 1) {
-            return false;
-        }
-        return isAVL(node.left) && isAVL(node.right);
+        return Math.abs(balance(this.root)) <= 1;
     }
     /**
      * Retorna a altura da árvore.
